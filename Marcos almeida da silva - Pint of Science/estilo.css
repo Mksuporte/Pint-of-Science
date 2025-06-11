@@ -1,0 +1,395 @@
+/* ===== VARIÁVEIS GLOBAIS ===== */
+:root {
+    --primary: #2c3e50;       /* Cor primária (azul escuro) */
+    --secondary: #e74c3c;     /* Cor secundária (vermelho) */
+    --light: #ecf0f1;        /* Cor de fundo clara */
+    --dark: #1a252f;         /* Cor escura para textos/footer */
+}
+
+/* ===== RESET BÁSICO ===== */
+* {
+    margin: 0;               /* Remove todas as margens padrão */
+    padding: 0;              /* Remove todos os paddings padrão */
+    box-sizing: border-box;  /* Faz padding/border contar na largura total */
+}
+
+/* ===== ESTILOS GERAIS ===== */
+body {
+    font-family: 'Poppins', sans-serif;  /* Fonte principal */
+    line-height: 1.6;                   /* Espaçamento entre linhas */
+    color: #333;                        /* Cor padrão do texto */
+    background-color: var(--light);     /* Cor de fundo */
+}
+
+/* ===== CABEÇALHO ===== */
+header {
+    background: linear-gradient(135deg, var(--primary), var(--dark)); /* Gradiente */
+    color: white;                      /* Cor do texto */
+    padding: 4rem 0 3rem;              /* Espaçamento interno (topo/direita/baixo/esquerda) */
+    text-align: center;                /* Alinhamento central */
+    position: relative;                /* Para elementos filhos posicionados */
+    overflow: hidden;                  /* Esconde conteúdo que ultrapassar */
+}
+
+/* Container da logo */
+.logo-container {
+    max-width: 180px;      /* Largura máxima */
+    margin: 0 auto 1rem;   /* Centraliza horizontalmente e adiciona margem abaixo */
+}
+
+/* Imagem da logo */
+.header-logo {
+    width: 100%;           /* Ocupa 100% do container pai */
+    height: auto;          /* Mantém proporção */
+    display: block;        /* Remove espaços indesejados */
+    border-radius: 50%;    /* Transforma em círculo */
+    border: 3px solid white; /* Borda branca */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra */
+    transition: transform 0.3s; /* Animação suave ao passar mouse */
+}
+
+.header-logo:hover {
+    transform: scale(1.05); /* Efeito de zoom no hover */
+}
+
+/* Efeito de overlay no header */
+header::before {
+    content: "";           /* Pseudo-elemento obrigatório */
+    position: absolute;    /* Posiciona sobre o header */
+    top: 0; left: 0;       /* Alinha nos cantos */
+    width: 100%; height: 100%; /* Ocupa todo espaço */
+    opacity: 0.2;          /* Transparência */
+    z-index: 0;            /* Fica atrás do conteúdo */
+}
+
+/* Título principal */
+header h1 {
+    font-size: 3rem;       /* Tamanho grande */
+    margin-bottom: 1rem;   /* Espaço abaixo */
+    position: relative;    /* Para z-index funcionar */
+    z-index: 1;            /* Fica na frente do overlay */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Sombra no texto */
+}
+
+/* Subtítulo */
+header p {
+    font-size: 1.5rem;     /* Tamanho médio */
+    position: relative;    /* Para z-index */
+    z-index: 1;            /* Fica na frente */
+    max-width: 800px;      /* Largura máxima */
+    margin: 0 auto;        /* Centraliza */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* Sombra sutil */
+}
+
+/* ===== NAVEGAÇÃO ===== */
+nav {
+    background-color: var(--primary); /* Cor de fundo */
+    position: sticky;      /* Fixa no topo ao rolar */
+    top: 0;                /* Distância do topo */
+    z-index: 100;          /* Garante que fique acima de outros elementos */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Sombra */
+}
+
+/* Lista de navegação */
+nav ul {
+    display: flex;         /* Layout flexbox */
+    justify-content: center; /* Centraliza itens */
+    list-style: none;      /* Remove marcadores */
+    padding: 1rem 0;       /* Espaçamento vertical */
+    flex-wrap: wrap;       /* Permite quebra de linha */
+}
+
+/* Itens da navegação */
+nav ul li {
+    margin: 0 1.5rem;      /* Espaçamento horizontal entre itens */
+}
+
+/* Links da navegação */
+nav ul li a {
+    color: white;          /* Cor do texto */
+    text-decoration: none; /* Remove sublinhado */
+    font-weight: 600;      /* Negrito */
+    font-size: 1.1rem;     /* Tamanho */
+    transition: color 0.3s; /* Transição suave */
+    padding: 0.5rem 0;     /* Espaçamento interno */
+    position: relative;    /* Para pseudo-elemento */
+}
+
+/* Efeito hover nos links */
+nav ul li a:hover {
+    color: var(--secondary); /* Muda cor ao passar mouse */
+}
+
+/* Efeito de sublinhado animado */
+nav ul li a::after {
+    content: '';           /* Pseudo-elemento obrigatório */
+    position: absolute;    /* Posiciona em relação ao link */
+    width: 0;              /* Começa invisível */
+    height: 2px;           /* Altura do sublinhado */
+    bottom: 0; left: 0;    /* Alinha na base */
+    background-color: var(--secondary); /* Cor */
+    transition: width 0.3s; /* Animação */
+}
+
+nav ul li a:hover::after {
+    width: 100%;           /* Expandir ao passar mouse */
+}
+
+/* ===== LAYOUT PRINCIPAL ===== */
+.container {
+    max-width: 1200px;     /* Largura máxima */
+    margin: 0 auto;        /* Centraliza */
+    padding: 2rem;         /* Espaçamento interno */
+}
+
+/* Seções de conteúdo */
+section {
+    margin-bottom: 3rem;   /* Espaço entre seções */
+    padding: 2rem;         /* Espaçamento interno */
+    background-color: white; /* Fundo branco */
+    border-radius: 8px;    /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Sombra */
+}
+
+/* ===== TIPOGRAFIA ===== */
+h2 {
+    color: var(--primary); /* Cor */
+    font-size: 2rem;       /* Tamanho */
+    margin-bottom: 1.5rem; /* Espaço abaixo */
+    position: relative;    /* Para pseudo-elemento */
+    padding-bottom: 0.5rem; /* Espaço para a linha */
+}
+
+/* Linha decorativa abaixo do h2 */
+h2::after {
+    content: '';           /* Pseudo-elemento */
+    position: absolute;    /* Posiciona em relação ao h2 */
+    width: 80px;           /* Largura */
+    height: 4px;           /* Altura */
+    background-color: var(--secondary); /* Cor */
+    bottom: 0; left: 0;    /* Alinha na base */
+    border-radius: 2px;    /* Bordas arredondadas */
+}
+
+h3 {
+    color: var(--dark);    /* Cor */
+    margin: 1.5rem 0 1rem; /* Espaçamento */
+    font-size: 1.5rem;     /* Tamanho */
+}
+
+p {
+    margin-bottom: 1rem;   /* Espaço entre parágrafos */
+}
+
+/* ===== COMPONENTES ===== */
+/* Destaque especial */
+.highlight {
+    background-color: rgba(231, 76, 60, 0.1); /* Fundo vermelho claro */
+    padding: 1.5rem;       /* Espaçamento interno */
+    border-left: 4px solid var(--secondary); /* Borda lateral */
+    margin: 1.5rem 0;      /* Espaçamento externo */
+    border-radius: 0 4px 4px 0; /* Bordas só à direita */
+}
+
+/* Estatísticas */
+.stats {
+    display: flex;         /* Layout flex */
+    justify-content: space-around; /* Distribui espaço */
+    flex-wrap: wrap;       /* Permite quebra de linha */
+    margin: 2rem 0;        /* Espaçamento */
+}
+
+.stat-item {
+    text-align: center;    /* Centraliza conteúdo */
+    padding: 1.5rem;       /* Espaçamento interno */
+    flex: 1;              /* Cresce igualmente */
+    min-width: 200px;      /* Largura mínima */
+    margin: 0.5rem;        /* Espaço entre itens */
+    background-color: white; /* Fundo */
+    border-radius: 8px;    /* Bordas arredondadas */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra */
+}
+
+.stat-number {
+    font-size: 2.5rem;     /* Tamanho grande */
+    font-weight: 700;      /* Negrito */
+    color: var(--secondary); /* Cor */
+    margin-bottom: 0.5rem; /* Espaço abaixo */
+}
+
+.stat-label {
+    font-size: 1rem;       /* Tamanho normal */
+    color: var(--dark);    /* Cor */
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+    position: relative;    /* Para linha central */
+    max-width: 1200px;     /* Largura máxima */
+    margin: 2rem auto;     /* Centraliza */
+}
+
+/* Linha vertical central */
+.timeline::after {
+    content: '';           /* Pseudo-elemento */
+    position: absolute;    /* Posiciona na timeline */
+    width: 6px;            /* Largura */
+    background-color: var(--primary); /* Cor */
+    top: 0; bottom: 0;     /* Altura total */
+    left: 50%;             /* Centraliza */
+    margin-left: -3px;     /* Ajuste fino */
+}
+
+.timeline-item {
+    padding: 10px 40px;    /* Espaçamento interno */
+    position: relative;     /* Para posicionar marcadores */
+    width: 50%;            /* Ocupa metade da largura */
+    box-sizing: border-box; /* Padding incluso na largura */
+}
+
+/* Marcadores circulares */
+.timeline-item::after {
+    content: '';           /* Pseudo-elemento */
+    position: absolute;    /* Posiciona na linha */
+    width: 25px; height: 25px; /* Tamanho */
+    right: -12px;          /* Alinha com a linha */
+    background-color: white; /* Fundo */
+    border: 4px solid var(--secondary); /* Borda */
+    top: 15px;             /* Posição vertical */
+    border-radius: 50%;    /* Forma circular */
+    z-index: 1;            /* Fica na frente */
+}
+
+/* Itens à esquerda */
+.left {
+    left: 0;               /* Alinha à esquerda */
+}
+
+/* Itens à direita */
+.right {
+    left: 50%;             /* Alinha à direita */
+}
+
+.right::after {
+    left: -12px;           /* Ajusta posição do marcador */
+}
+
+.timeline-content {
+    padding: 20px;         /* Espaçamento interno */
+    background-color: white; /* Fundo */
+    position: relative;     /* Para z-index */
+    border-radius: 6px;     /* Bordas arredondadas */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra */
+}
+
+/* ===== GRID DE CIDADES ===== */
+.cities-grid {
+    display: grid;         /* Layout grid */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Colunas responsivas */
+    gap: 1rem;             /* Espaço entre itens */
+    margin-top: 1.5rem;    /* Espaço acima */
+}
+
+.city-card {
+    background-color: white; /* Fundo */
+    padding: 1rem;         /* Espaçamento interno */
+    border-radius: 4px;    /* Bordas arredondadas */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Sombra */
+    text-align: center;     /* Centraliza conteúdo */
+    transition: transform 0.3s; /* Animação */
+}
+
+.city-card:hover {
+    transform: translateY(-5px); /* Eleva ao passar mouse */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra maior */
+}
+
+/* ===== BOTÕES ===== */
+.btn {
+    display: inline-block;  /* Permite largura/padding */
+    background-color: var(--secondary); /* Cor de fundo */
+    color: white;          /* Cor do texto */
+    padding: 0.8rem 1.5rem; /* Espaçamento interno */
+    border-radius: 4px;    /* Bordas arredondadas */
+    text-decoration: none; /* Remove sublinhado */
+    font-weight: 600;      /* Negrito */
+    transition: background-color 0.3s; /* Animação */
+    border: none;          /* Remove borda padrão */
+    cursor: pointer;       /* Cursor de clique */
+    margin-top: 1rem;      /* Espaço acima */
+}
+
+.btn:hover {
+    background-color: #c0392b; /* Cor mais escura no hover */
+}
+
+/* ===== RODAPÉ ===== */
+footer {
+    background-color: var(--dark); /* Cor de fundo */
+    color: white;         /* Cor do texto */
+    text-align: center;   /* Alinhamento */
+    padding: 2rem 0;      /* Espaçamento interno */
+    margin-top: 2rem;     /* Espaço acima */
+}
+
+.social-links {
+    margin: 1rem 0;       /* Espaçamento */
+}
+
+.social-links a {
+    color: white;         /* Cor dos ícones */
+    margin: 0 0.5rem;     /* Espaço entre ícones */
+    font-size: 1.5rem;    /* Tamanho */
+    transition: color 0.3s; /* Animação */
+}
+
+.social-links a:hover {
+    color: var(--secondary); /* Cor no hover */
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+    /* Ajustes para telas menores */
+    header {
+        padding: 3rem 0 2rem; /* Reduz espaçamento */
+    }
+    
+    .logo-container {
+        max-width: 120px; /* Logo menor */
+    }
+    
+    header h1 {
+        font-size: 2rem;  /* Título menor */
+    }
+    
+    header p {
+        font-size: 1.2rem; /* Texto menor */
+    }
+    
+    nav ul li {
+        margin: 0 0.8rem; /* Menos espaço entre links */
+    }
+    
+    /* Timeline em uma coluna */
+    .timeline::after {
+        left: 31px;       /* Alinha linha à esquerda */
+    }
+    
+    .timeline-item {
+        width: 100%;      /* Largura total */
+        padding-left: 70px; /* Mais espaço à esquerda */
+        padding-right: 25px; /* Menos à direita */
+    }
+    
+    .timeline-item::after {
+        left: 18px;       /* Posiciona marcador */
+    }
+    
+    .left::after, .right::after {
+        left: 18px;       /* Alinha todos os marcadores */
+    }
+    
+    .right {
+        left: 0%;         /* Itens à esquerda */
+    }
+}
